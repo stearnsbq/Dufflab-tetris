@@ -129,7 +129,6 @@ public class Tetromino : MonoBehaviour
                 // Clear filled horizontal lines
                 Playfield.deleteFullRows();
 
-
                 FindObjectOfType<GameController>().updateScore(2 * cells);
                 // Spawn next Group
                 FindObjectOfType<Spawner>().spawnNext();

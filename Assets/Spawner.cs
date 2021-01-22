@@ -8,8 +8,6 @@ public class Spawner : MonoBehaviour
 
     public GameObject[] groups;
 
-
-
     public int next = -1;
 
     public GameObject nextTetro;
@@ -17,24 +15,19 @@ public class Spawner : MonoBehaviour
     public void spawnNext() {
         // Random Index
 
-        int i; 
+        int i = (next == -1) ? Random.Range(0, groups.Length) : next; 
 
-        if(next == -1){
-            i = Random.Range(0, groups.Length);
-        }else{
-            i = next;
-        }
 
         next = Random.Range(0, groups.Length);
 
         // Spawn Group at current Position
 
 
-
         GameObject currentTetro = Instantiate(groups[i],
                     transform.position, 
                     Quaternion.identity);
-        
+
+
         
         if(nextTetro){
             Destroy(nextTetro);
