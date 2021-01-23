@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Playfield : MonoBehaviour {
     // The Grid itself
     public static int w = 10;
-    public static int h = 22;
+    public static int h = 20;
     public static Transform[,] grid = new Transform[w, h];
 
     public static Vector2 roundVec2(Vector2 v) {
@@ -15,7 +15,7 @@ public class Playfield : MonoBehaviour {
     public static bool insideBorder(Vector2 pos) {
         return ((int)pos.x >= 0 &&
                 (int)pos.x < w &&
-                (int)pos.y >= 0); //line added by me temporary
+                (int)pos.y >= 0);
     }
     public static void deleteRow(int y) {
         for (int x = 0; x < w; ++x) {
@@ -45,20 +45,7 @@ public class Playfield : MonoBehaviour {
                 return false;
         return true;
     }
-    
-    //------------------------------------------------------------------------------
-    public static bool isBlockInRow(int y) {
-        for (int x = 0; x < w; ++x){
-            if (grid[x, y] != null){
-                //Block is in row
-                return true;
-            }
-        }
-        //Block is not in row
-        return false;
-        
-    }
-    //------------------------------------------------------------------------------
+
 
 
 
