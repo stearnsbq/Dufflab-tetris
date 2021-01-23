@@ -40,7 +40,7 @@ public class Spawner : MonoBehaviour
             Destroy(nextTetro);
         }
 
-        DisplayTetromino display = FindObjectOfType<DisplayTetromino>();
+        GameObject display = GameObject.Find("DisplaySpawner");
 
         nextTetro = Instantiate(groups[next],
                     display.transform.position,
