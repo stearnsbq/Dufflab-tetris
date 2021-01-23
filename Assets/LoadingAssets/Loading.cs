@@ -23,7 +23,7 @@ public class Loading : MonoBehaviour
 
         timeLeft -= Time.deltaTime;
          if(timeLeft < 0)
-         {
+         { 
              SceneManager.LoadScene("Game");
          }
         
