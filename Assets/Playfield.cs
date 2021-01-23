@@ -15,7 +15,7 @@ public class Playfield : MonoBehaviour {
     public static bool insideBorder(Vector2 pos) {
         return ((int)pos.x >= 0 &&
                 (int)pos.x < w &&
-                (int)pos.y >= 0);
+                (int)pos.y >= 0 && pos.y <= h);
     }
     public static void deleteRow(int y) {
         for (int x = 0; x < w; ++x) {
