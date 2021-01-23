@@ -15,8 +15,7 @@ public class Tetromino : MonoBehaviour
         // Default position not valid? Then it's game over
         if (!isValidGridPos())
         {
-            Debug.Log("GAME OVER");
-            Destroy(gameObject);
+            gameOver();
         }
     }
 
@@ -143,9 +142,9 @@ public class Tetromino : MonoBehaviour
 
 
     }
-
-    bool isValidGridPos()
-    {
+    //------------------------------------------------------------------------------
+    bool isValidGridPos(){
+      try{
         foreach (Transform child in transform)
         {
             Vector2 v = Playfield.roundVec2(child.position);
@@ -160,7 +159,21 @@ public class Tetromino : MonoBehaviour
                 return false;
         }
         return true;
+      }
+      catch(System.IndexOutOfRangeException){
+        Debug.Log("IndexOutOfRangeException Caught");
+        return false;
+      }
     }
+    //------------------------------------------------------------------------------
+    public static void gameOver(){
+      Debug.Log("GAME OVER");
+      //Destroy(gameObject); <- Old method used to stop the game
+      Time.timeScale = 0; //Stops default game progress, does not prevent user control
+      Application.Quit(); //Quits the game if running outside of editor
+      Debug.Break(); //Stops the game if running inside of the editor
+    }
+    //------------------------------------------------------------------------------
     void updateGrid()
     {
         // Remove old children from grid

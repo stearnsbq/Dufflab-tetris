@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Playfield : MonoBehaviour {
     // The Grid itself
     public static int w = 10;
-    public static int h = 20;
+    public static int h = 22; //Left at 22 vs 20 to leave room for the spawner
     public static Transform[,] grid = new Transform[w, h];
 
     public static Vector2 roundVec2(Vector2 v) {
@@ -46,7 +46,19 @@ public class Playfield : MonoBehaviour {
         return true;
     }
 
-
+    //------------------------------------------------------------------------------
+    //Checks if any block is in the included row
+    public static bool isBlockInRow(int y) {
+        for (int x = 0; x < w; ++x){
+            if (grid[x, y] != null){
+                //Block is in row
+                return true;
+            }
+        }
+        //Block is not in row
+        return false;
+    }
+    //------------------------------------------------------------------------------
 
 
     public static void deleteFullRows() {
